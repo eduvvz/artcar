@@ -3,10 +3,20 @@ import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import './assets/scss/styles.scss'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+library.add(faBars)
 
 Vue.use(VueRouter)
-Vue.use(BootstrapVue);
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.use(BootstrapVue)
 
 const router = new VueRouter({
   routes,

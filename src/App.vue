@@ -1,16 +1,16 @@
 <template>
   <div id="app">
+    <app-nav></app-nav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import routes from "./routes"
+import nav from './components/shared/layout/Navbar.vue'
+
 export default {
-  data(){
-    return {
-      routes
-    }
-  }
+  components: {
+    'app-nav': nav
+  },
 };
 </script>

@@ -1,0 +1,17 @@
+.color {
+    &-1 {
+        color: $c-white !important;
+    }
+    &-2 {
+        color: $c-black !important;
+    }
+}
+
+.bg-color {
+    &-1 {
+        background-color: $c-white !important;
+    }
+    &-2 {
+        background-color: $c-black !important;
+    }
+}

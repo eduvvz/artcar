@@ -1,3 +1,8 @@
+@import './helpers/vars.scss';
+@import './helpers/geral.scss';
+@import './helpers/colors.scss';
+
 @import './components/pages/contato.scss';
 @import './components/pages/home.scss';
 @import './components/pages/veiculos.scss';
+@import './components/shared/navbar.scss';
