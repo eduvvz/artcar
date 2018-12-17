@@ -5,6 +5,9 @@
     &-2 {
         color: $c-black !important;
     }
+    &-3 {
+        color: $c-gray !important;
+    }
 }
 
 .bg-color {
@@ -13,5 +16,8 @@
     }
     &-2 {
         background-color: $c-black !important;
+    }
+    &-3 {
+        background-color: $c-gray !important;
     }
 }

@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleScroll() {
-      window.scrollY > 200 ? 
+      window.scrollY > 100 ? 
         document.getElementById('nav').classList.add('bg-color-2') :
         document.getElementById('nav').classList.remove('bg-color-2')
     }

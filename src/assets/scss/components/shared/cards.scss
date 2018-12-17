@@ -1,0 +1,29 @@
+.card-prin {
+    width: 90%;
+    min-height: 280px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.5s;
+
+    &:hover {
+        box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+    }
+
+    .bg-full {
+        height: 180px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+
+        @media #{$s-m} {
+            height: 230px;
+        }
+    }
+
+    h5 {
+        margin-top: 20px;
+        text-align: center;
+    }
+    h6 {
+        text-align: center;
+    }
+}
