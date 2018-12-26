@@ -28,7 +28,14 @@
     margin: 0px !important;
 }
 
+.greyscale-30 {
+    filter: grayscale(30%);
+}
+
 .vh {
+    &-40 {
+        min-height: 40vh;
+    }
     &-80 {
         min-height: 80vh;
     }
