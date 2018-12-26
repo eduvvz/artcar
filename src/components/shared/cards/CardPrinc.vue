@@ -4,8 +4,16 @@
             <div class="bg-full" 
                 :style="{'background-image': 'url(' + img + ')'}">
             </div>
-            <h5 class="color-1">{{ title }}</h5>
-            <h6 class="color-1">R$ {{ price }}</h6>
+            <div class="body">
+                <h5 class="color-1">{{ title }}</h5>
+                <hr>
+                <div class="w-100 d-flex align-content-center justify-content-center">
+                    <div class="price">
+                        <p class="color-2">R$ {{ price }}</p>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </b-col>
 </template>
