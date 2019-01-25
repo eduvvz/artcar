@@ -97,7 +97,7 @@
                                     type="email"
                                     required
                                     placeholder="Conte o motivo do seu contato"
-                                    v-model="form"
+                                    v-model="form.assunto"
                                 >
                                 </b-form-input>
                             </b-form-group>
@@ -128,7 +128,11 @@ export default {
 
     data() {
         return {
-            form: new Object,
+            form: {
+                msg: '',
+                assunto: '',
+                email: ''
+            },
         }
     },
 
