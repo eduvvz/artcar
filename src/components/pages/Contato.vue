@@ -73,7 +73,7 @@
                         Mande sua dúvida ou sugestão, vamos ficar felizes em esclarecer qualquer coisa!
                     </p>
                 </b-col>
-                <b-col md="9">
+                <b-col md="8" offset-md="1">
                     <b-row>
                         <b-col sm="11" class="form">
                             <b-form-group
