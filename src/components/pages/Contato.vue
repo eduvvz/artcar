@@ -76,42 +76,571 @@
                 <b-col md="8" offset-md="1">
                     <b-row>
                         <b-col sm="11" class="form">
-                            <b-form-group
-                                label="Endereço de e-mail"
-                                label-for="email"
-                                description="A partir deste e-mail que iremos entrar em contato."
-                            >
-                                <b-form-input id="email"
-                                    type="email"
-                                    required
-                                    placeholder="Escreva seu e-mail"
-                                    v-model="form.email"
+                            <div class="w-100">
+                                <p class="color-3">Qual o motivo do seu contato?</p>
+                                <div class="btn-toggle">
+                                    <div id="tirarDuvidasBtn" class="active" @click="handlerFormRender(1)">Tirar duvidas</div>
+                                    <div id="tirarAdiantarBtn" @click="handlerFormRender(2)">Adiantar Compra</div>
+                                </div>
+                            </div>
+                            <div v-if="simpleForm">
+                                <b-form-group
+                                    label="Endereço de e-mail"
+                                    label-for="email"
+                                    description="A partir deste e-mail que iremos entrar em contato."
+                                    class="mt-3"
                                 >
-                                </b-form-input>
-                            </b-form-group>
-                            <b-form-group
-                                label="Assunto do contato"
-                                label-for="assunto"
-                            >
-                                <b-form-input id="assunto"
-                                    type="email"
-                                    required
-                                    placeholder="Conte o motivo do seu contato"
-                                    v-model="form.assunto"
+                                    <b-form-input id="email"
+                                        type="email"
+                                        required
+                                        placeholder="Escreva seu e-mail"
+                                        v-model="form.email"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Assunto do contato"
+                                    label-for="assunto"
                                 >
-                                </b-form-input>
-                            </b-form-group>
-                            <b-form-group
-                                label="Mensagem"
-                                label-for="mensagem"
-                            >
-                                <b-form-textarea id="mensagem"
-                                    placeholder="Escreva sua mensagem"
-                                    :rows="6"
-                                    v-model="form.msg"
+                                    <b-form-input id="assunto"
+                                        type="text"
+                                        required
+                                        placeholder="Conte o motivo do seu contato"
+                                        v-model="form.assunto"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Mensagem"
+                                    label-for="mensagem"
                                 >
-                                </b-form-textarea>
-                            </b-form-group>
+                                    <b-form-textarea id="mensagem"
+                                        placeholder="Escreva sua mensagem"
+                                        :rows="6"
+                                        v-model="form.msg"
+                                    >
+                                    </b-form-textarea>
+                                </b-form-group>
+                            </div>
+                            <div v-if="!simpleForm">
+                                <b-form-group
+                                    label="Nome"
+                                    label-for="nome"
+                                    class="mt-3"
+                                >
+                                    <b-form-input id="nome"
+                                        type="text"
+                                        required
+                                        placeholder="Nome"
+                                        v-model="form.nome"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Data Nasc"
+                                    label-for="dataNasc"
+                                >
+                                    <b-form-input id="dataNasc"
+                                        type="date"
+                                        required
+                                        placeholder="Data de Nascimento"
+                                        v-model="form.dataNasc"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="CPF"
+                                    label-for="cpf"
+                                >
+                                    <b-form-input id="cpf"
+                                        type="text"
+                                        required
+                                        placeholder="CPF"
+                                        v-model="form.cpf"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Pai"
+                                    label-for="nomePai"
+                                >
+                                    <b-form-input id="nomePai"
+                                        type="text"
+                                        required
+                                        placeholder="Nome do pai"
+                                        v-model="form.nomePai"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Mãe"
+                                    label-for="nomeMae"
+                                >
+                                    <b-form-input id="nomeMae"
+                                        type="text"
+                                        required
+                                        placeholder="Nome da mãe"
+                                        v-model="form.nomeMae"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Endereço"
+                                    label-for="endereco"
+                                >
+                                    <b-form-input id="endereco"
+                                        type="text"
+                                        required
+                                        placeholder="endereco"
+                                        v-model="form.endereco"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Cidade"
+                                    label-for="cidade"
+                                >
+                                    <b-form-input id="cidade"
+                                        type="text"
+                                        required
+                                        placeholder="Cidade"
+                                        v-model="form.cidade"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Telefone Residencial"
+                                    label-for="telRef"
+                                >
+                                    <b-form-input id="telRef"
+                                        type="text"
+                                        required
+                                        placeholder="Telefone Residencial"
+                                        v-model="form.telRes"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Telefone Celular"
+                                    label-for="telCel"
+                                >
+                                    <b-form-input id="telCel"
+                                        type="text"
+                                        required
+                                        placeholder="Telefone Celular"
+                                        v-model="form.telCel"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Estado Civil"
+                                    label-for="estCivil"
+                                >
+                                    <b-form-input id="estCivil"
+                                        type="text"
+                                        required
+                                        placeholder="Etado Civil"
+                                        v-model="form.estadoCivil"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Habilitado?"
+                                    label-for="habilitado"
+                                >
+                                    <b-form-input id="habilitado"
+                                        type="text"
+                                        required
+                                        placeholder="É habilitado atualmente?"
+                                        v-model="form.habilitado"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Natural"
+                                    label-for="natural"
+                                >
+                                    <b-form-input id="natural"
+                                        type="text"
+                                        required
+                                        placeholder="Natural"
+                                        v-model="form.natural"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="RG"
+                                    label-for="rg"
+                                >
+                                    <b-form-input id="rg"
+                                        type="text"
+                                        required
+                                        placeholder="RG"
+                                        v-model="form.rg"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Emissão"
+                                    label-for="emissao"
+                                >
+                                    <b-form-input id="emissao"
+                                        type="text"
+                                        required
+                                        placeholder="Emissão"
+                                        v-model="form.emissao"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="CEP"
+                                    label-for="cep"
+                                >
+                                    <b-form-input id="cep"
+                                        type="text"
+                                        required
+                                        placeholder="CEP"
+                                        v-model="form.cep"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Tempo Res."
+                                    label-for="tempoRes"
+                                >
+                                    <b-form-input id="tempoRes"
+                                        type="text"
+                                        required
+                                        placeholder="Tempo Residencial"
+                                        v-model="form.tempoRes"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Em Nome De"
+                                    label-for="emNome"
+                                >
+                                    <b-form-input id="emNome"
+                                        type="text"
+                                        required
+                                        placeholder="Em Nome De"
+                                        v-model="form.emNome"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="E-mail"
+                                    label-for="email"
+                                >
+                                    <b-form-input id="email"
+                                        type="text"
+                                        required
+                                        placeholder="E-mail"
+                                        v-model="form.email"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="CJJ Posui Restrição?"
+                                    label-for="cjjRestricao"
+                                >
+                                    <b-form-input id="cjjRestricao"
+                                        type="text"
+                                        required
+                                        placeholder="CJJ"
+                                        v-model="form.cjjRestricao"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Renda"
+                                    label-for="renda"
+                                >
+                                    <b-form-input id="renda"
+                                        type="text"
+                                        required
+                                        placeholder="Renda"
+                                        v-model="form.renda"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Empresa"
+                                    label-for="empresa"
+                                >
+                                    <b-form-input id="empresa"
+                                        type="text"
+                                        required
+                                        placeholder="Empresa"
+                                        v-model="form.empresa"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Cargo"
+                                    label-for="cargo"
+                                >
+                                    <b-form-input id="cargo"
+                                        type="text"
+                                        required
+                                        placeholder="Cargo"
+                                        v-model="form.cargo"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Se proprietario CNPJ"
+                                    label-for="cnpj"
+                                >
+                                    <b-form-input id="cnpj"
+                                        type="text"
+                                        required
+                                        placeholder="CNPJ"
+                                        v-model="form.cnpj"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Local da empresa"
+                                    label-for="localTrab"
+                                >
+                                    <b-form-input id="localTrab"
+                                        type="text"
+                                        required
+                                        placeholder="Endereço"
+                                        v-model="form.enderecoEmpresa"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Cidade da Empresa"
+                                    label-for="cidEmpresa"
+                                >
+                                    <b-form-input id="cidEmpresa"
+                                        type="text"
+                                        required
+                                        placeholder="Cidade"
+                                        v-model="form.cidEmpresa"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Outras Rendas"
+                                    label-for="outrasRendas"
+                                >
+                                    <b-form-input id="outrasRendas"
+                                        type="text"
+                                        required
+                                        placeholder="Outras Rendas"
+                                        v-model="form.outrasRendas"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Telefone Empresa"
+                                    label-for="telEmpresa"
+                                >
+                                    <b-form-input id="telEmpresa"
+                                        type="text"
+                                        required
+                                        placeholder="Telefone"
+                                        v-model="form.telEmpresa"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Admissão"
+                                    label-for="admissao"
+                                >
+                                    <b-form-input id="admissao"
+                                        type="text"
+                                        required
+                                        placeholder="Admissão"
+                                        v-model="form.admissao"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Contador"
+                                    label-for="contador"
+                                >
+                                    <b-form-input id="contador"
+                                        type="text"
+                                        required
+                                        placeholder="Contador"
+                                        v-model="form.contador"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="CEP Empresa"
+                                    label-for="cep"
+                                >
+                                    <b-form-input id="cepEmpresa"
+                                        type="text"
+                                        required
+                                        placeholder="CEP"
+                                        v-model="form.cepEmpresa"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <p class="color-3 mt-5">
+                                    Refencia Pessoais
+                                </p>
+                                <hr>
+                                <b-form-group
+                                    label="Nome"
+                                    label-for="refNome"
+                                >
+                                    <b-form-input id="refNome"
+                                        type="text"
+                                        required
+                                        placeholder="Nome"
+                                        v-model="form.refNome"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Grau de parentesco"
+                                    label-for="grauParentesco"
+                                >
+                                    <b-form-input id="grauParentesco"
+                                        type="text"
+                                        required
+                                        placeholder="Grau"
+                                        v-model="form.refGrauParentesco"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Telefone"
+                                    label-for="refTelefone"
+                                >
+                                    <b-form-input id="refTelefone"
+                                        type="text"
+                                        required
+                                        placeholder="Telefone"
+                                        v-model="form.refTelefone"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <p class="color-3 mt-5">
+                                    Referencias Bancarias
+                                </p>
+                                <hr>
+                                <b-form-group
+                                    label="Banco"
+                                    label-for="banco"
+                                >
+                                    <b-form-input id="banco"
+                                        type="text"
+                                        required
+                                        placeholder="Informe o número do banco"
+                                        v-model="form.banco"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Agencia"
+                                    label-for="agencia"
+                                >
+                                    <b-form-input id="agencia"
+                                        type="text"
+                                        required
+                                        placeholder="Ag"
+                                        v-model="form.agencia"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Conta Corrente"
+                                    label-for="conta"
+                                >
+                                    <b-form-input id="conta"
+                                        type="text"
+                                        required
+                                        placeholder="C/C"
+                                        v-model="form.conta"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <p class="color-3 mt-5">
+                                    Veiculo
+                                </p>
+                                <hr>
+                                <b-form-group
+                                    label="Veiculo"
+                                    label-for="veiculo"
+                                >
+                                    <b-form-input id="veiculo"
+                                        type="text"
+                                        required
+                                        placeholder="Veiculo"
+                                        v-model="form.veiculo"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Valor da Venda"
+                                    label-for="valorVenda"
+                                >
+                                    <b-form-input id="valorVenda"
+                                        type="text"
+                                        required
+                                        placeholder="Informe o valor"
+                                        v-model="form.valorVenda"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Valor do Financiamento"
+                                    label-for="valorFinanciado"
+                                >
+                                    <b-form-input id="valorFinanciado"
+                                        type="text"
+                                        required
+                                        placeholder="Informe o valor"
+                                        v-model="form.valorFinanciado"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Ano Fab/Modelo"
+                                    label-for="anoFabMod"
+                                >
+                                    <b-form-input id="anoFabMod"
+                                        type="text"
+                                        required
+                                        placeholder="Ano Fab/Modelo"
+                                        v-model="form.anoFabMod"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Entrada"
+                                    label-for="entrada"
+                                >
+                                    <b-form-input id="entrada"
+                                        type="text"
+                                        required
+                                        placeholder="Informe o valor"
+                                        v-model="form.entrada"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                                <b-form-group
+                                    label="Parcelas"
+                                    label-for="parcelas"
+                                >
+                                    <b-form-input id="parcelas"
+                                        type="text"
+                                        required
+                                        placeholder="Informe a quantidade de parcelas e valor delas"
+                                        v-model="form.parcelas"
+                                    >
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
                             <b-button class="mt-3" size="lg" @click="sendForm()">Enviar</b-button>
                         </b-col>
                     </b-row>
@@ -128,10 +657,53 @@ export default {
 
     data() {
         return {
+            simpleForm: true,
             form: {
                 msg: '',
                 assunto: '',
-                email: ''
+                email: '',
+                nome: '',
+                dataNasc: '',
+                cpf: '',
+                nomePai: '',
+                nomeMae: '',
+                endereco: '',
+                cidade: '',
+                telRes: '',
+                telCel: '',
+                estadoCivil: '',
+                localTrab: '',
+                habilitado: '',
+                natural: '',
+                rg: '',
+                emissao: '',
+                cep: '',
+                tempoRes: '',
+                emNome: '',
+                cjjRestricao: '',
+                renda: '',
+                empresa: '',
+                cargo: '',
+                cnpj: '',
+                enderecoEmpresa: '',
+                cidEmpresa: '',
+                outrasRendas: '',
+                telEmpresa: '',
+                admissao: '',
+                contadador: '',
+                cep: '',
+                refNome: '',
+                refGrauParentesco: '',
+                refTelefone: '',
+                banco: '',
+                agencia: '',
+                conta: '',
+                veiculo: '',
+                valorVenda: '',
+                valorFinanciado: '',
+                anoFabMod: '',
+                entrada: '',
+                parcelas: ''
             },
         }
     },
@@ -139,6 +711,17 @@ export default {
     methods: {
         sendForm() {
             console.log(this.form);
+        },
+        handlerFormRender(decider){
+            if (decider < 2) {
+                this.simpleForm = true
+                document.getElementById('tirarDuvidasBtn').classList.add('active');
+                document.getElementById('tirarAdiantarBtn').classList.remove('active');
+            } else {
+                this.simpleForm = false
+                document.getElementById('tirarAdiantarBtn').classList.add('active');
+                document.getElementById('tirarDuvidasBtn').classList.remove('active');
+            }
         }
     }
 }
