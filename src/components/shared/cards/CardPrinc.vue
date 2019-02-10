@@ -1,6 +1,6 @@
 <template>
     <b-col cols="12" sm="6" md="4" lg="3" class="mt-5 d-flex align-content-center justify-content-center">
-        <div class="card-prin">
+        <div class="card-prin" @click="pushInterna(veiculo.idVeiculo)">
             <div class="bg-full" 
                 :style="{'background-image': 'url( data:image/png;base64,' + veiculo.base64 + ')'}">
             </div>
@@ -26,6 +26,12 @@ export default {
             required: true,
             type: Object
         },
+    },
+
+    methods: {
+        pushInterna(id){
+            this.$router.push({ name: 'veiculo-interna', params: { id: this.veiculo.idVeiculo } });
+        }
     }
 
 }

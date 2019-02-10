@@ -101,11 +101,11 @@ export default {
   },
 
   created(){
-    console.log('criou');
     this.$http.get('https://artcarmultimarcas.herokuapp.com/list-home')
     .then(res => res.json())
     .then(function (veiculos){
         this.veiculos = veiculos;
+        console.log(this.veiculos);
     }, err => console.log(err));
   },
 
