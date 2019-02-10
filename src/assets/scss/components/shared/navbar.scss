@@ -30,7 +30,21 @@
     }
 }
 
+#menu-btn {
+    font-size: 2.2em;
+    transition: 0.5s;
+    &.minify {
+        font-size: 1.8em;
+        transition: 0.5s;
+    }
+}
+
 .logo-nav {
     width: 60px;
     height: auto;
+    transition: 0.5s;
+    &.minify {
+        width: 30px;
+        transition: 0.5s;
+    }
 }

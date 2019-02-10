@@ -101,6 +101,7 @@ export default {
   },
 
   created(){
+    window.scrollTo(0, 0);
     this.$http.get('https://artcarmultimarcas.herokuapp.com/list-home')
     .then(res => res.json())
     .then(function (veiculos){

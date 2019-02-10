@@ -2,7 +2,7 @@
   <b-container fluid id="nav">
     <b-row class="no-margin">
       <b-col cols="3" class="nav-col d-flex align-items-center">
-        <img class="logo-nav" src="../../../assets/img/artcar-logo.png" alt>
+        <img id="logo" class="logo-nav minify" src="../../../assets/img/artcar-logo.png" alt>
       </b-col>
       <b-col
         offset="5"
@@ -15,7 +15,7 @@
         <router-link :to="{name: 'veiculos'}" class="link-1 link-desk">Veiculos</router-link>
         <router-link :to="{name: 'contato'}" class="link-1 link-desk">Contato</router-link>
         <a class="link-mb">
-          <font-awesome-icon icon="bars" class="color-1" style="font-size:2.5em;"/>
+          <font-awesome-icon id="menu-btn" icon="bars" class="color-1 minify"/>
         </a>
       </b-col>
     </b-row>
@@ -32,9 +32,15 @@ export default {
   },
   methods: {
     handleScroll() {
-      window.scrollY > 100 ? 
-        document.getElementById('nav').classList.add('bg-color-3') :
+      if ( window.scrollY > 100) {
+        document.getElementById('nav').classList.add('bg-color-3') 
+        document.getElementById('logo').classList.remove('minify')
+        document.getElementById('menu-btn').classList.remove('minify')
+      } else {
         document.getElementById('nav').classList.remove('bg-color-3')
+        document.getElementById('logo').classList.add('minify')
+        document.getElementById('menu-btn').classList.add('minify')
+      }
     }
   }
 };

@@ -1,6 +1,27 @@
 <template>
     <div id="interna">
+        <b-container fluid class="no-padding bg-full" v-if="imagens.lenght != 0">
+            <b-carousel
+                style="text-shadow: 1px 1px 2px #333;"
+                indicators
+                controls
+                :interval="3000"
+                img-width="1024px"
+                img-height="480px"
+                v-model="slide"
+                @sliding-start="onSlideStart"
+                @sliding-end="onSlideEnd"
+            >
+                <b-carousel-slide img-blank
+                    class="slider-inter"
+                    v-for="(img, index) in imagens" :key="index"
+                    :style="{'background-image': 'url( data:image/png;base64,' + img.base64 + ')'}"
+                >
+                </b-carousel-slide>
+            </b-carousel>
+        </b-container>
         <b-container fluid class="vh-40 bg-full"
+            v-if="imagens == null"
             :style="{ 'background-image': 'url(' + require('../../../assets/img/automobile-cars-headlights-120049.jpg') + ')' }"
         >
         </b-container>
@@ -40,16 +61,34 @@
 export default {
     data() {
         return {
-            veiculo: {}
+            slide: 0,
+            sliding: null,
+            veiculo: {},
+            imagens: []
         }
     },
 
     created() {
+        window.scrollTo(0, 0);
         this.$http.get('https://artcarmultimarcas.herokuapp.com/veiculo/'+this.$route.params.id)
         .then(res => res.json())
         .then(function (veiculo){
             this.veiculo = veiculo[0];
+            this.$http.get('https://artcarmultimarcas.herokuapp.com/veiculo/imagens/'+this.$route.params.id)
+            .then(res => res.json())
+            .then(function (img){
+                this.imagens = img;
+            })
         }, err => console.log(err));
+    },
+
+    methods: {
+        onSlideStart(slide) {
+        this.sliding = true;
+        },
+        onSlideEnd(slide) {
+        this.sliding = false;
+        }
     }
 }
 </script>

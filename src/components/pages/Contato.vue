@@ -708,6 +708,10 @@ export default {
         }
     },
 
+    created(){
+        window.scrollTo(0, 0);
+    },
+
     methods: {
         sendForm() {
             console.log(this.form);
