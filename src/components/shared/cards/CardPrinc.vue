@@ -2,14 +2,14 @@
     <b-col cols="12" sm="6" md="4" lg="3" class="mt-5 d-flex align-content-center justify-content-center">
         <div class="card-prin">
             <div class="bg-full" 
-                :style="{'background-image': 'url(' + img + ')'}">
+                :style="{'background-image': 'url( data:image/png;base64,' + veiculo.base64 + ')'}">
             </div>
             <div class="body">
-                <h5 class="color-1">{{ title }}</h5>
+                <h5 class="color-1">{{ veiculo.modelo }}</h5>
                 <hr>
                 <div class="w-100 d-flex align-content-center justify-content-center">
                     <div class="price">
-                        <p class="color-2">R$ {{ price }}</p>
+                        <p class="color-2">{{ veiculo.anoModelo }}</p>
                     </div>
                 </div>
                 
@@ -22,18 +22,10 @@
 export default {
     
     props: {
-        img: {
+        veiculo: {
             required: true,
-            type: String
+            type: Object
         },
-        title: {
-            required: true,
-            type: String
-        },
-        price: {
-            required: true,
-            type: String
-        }
     }
 
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
@@ -17,6 +18,7 @@ library.add(faBars)
 Vue.use(VueRouter)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
+Vue.use(VueResource)
 
 const router = new VueRouter({
   routes,
